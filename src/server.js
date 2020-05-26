@@ -12,6 +12,7 @@ dotenv.config({
 
 const database = process.env.DATABASE
 
+
 mongoose.connect(database, {
     useUnifiedTopology: true,
     useNewUrlParser: true,

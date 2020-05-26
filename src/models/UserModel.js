@@ -1,10 +1,15 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const baseSchema = require('./BaseModel')
 
-const userSchema = new mongoose.Schema({
+const userSchema = baseSchema.schema(baseSchema.create, {
     name: {
         type: String,
         required: [true, 'Please fill your name']
+    },
+    surname: {
+        type: String,
+        required: [true, 'Please fill your surname']
     },
     email: {
         type: String,

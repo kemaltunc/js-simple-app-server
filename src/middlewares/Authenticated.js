@@ -19,7 +19,8 @@ exports.protect = async (req, res, next) => {
             return next(new AppError(401, 'fail', 'Unauthorized'), req, res, next)
         }
         const decode = await promisify(jwt.verify)(token, process.env.JWT_SECRET)
-        req.id = decode.id
+        req.user = decode.id
+        req.body.user = decode.id
         next()
 
     } catch (err) {

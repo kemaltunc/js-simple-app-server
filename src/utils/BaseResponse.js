@@ -4,9 +4,7 @@ class BaseResponse {
     }
 
     success(data) {
-        this.res.status(200).json({
-            data
-        })
+        this.res.status(200).json(data)
     }
     error(status, message) {
         this.res.status(510).json({

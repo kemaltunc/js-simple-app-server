@@ -1,10 +1,12 @@
-const express = require('express');
-const rateLimit = require('express-rate-limit');
-const helmet = require('helmet');
-const mongoSanitize = require('express-mongo-sanitize');
-const xss = require('xss-clean');
-const hpp = require('hpp');
-const cors = require('cors');
+const express = require('express')
+const rateLimit = require('express-rate-limit')
+const helmet = require('helmet')
+const mongoSanitize = require('express-mongo-sanitize')
+const xss = require('xss-clean')
+const hpp = require('hpp')
+const cors = require('cors')
+
+
 
 const app = express()
 
@@ -49,11 +51,19 @@ app.use(express.json({
 
 const routes = require('./routes/Routes')(app)
 
+
+app.use(globalErrHandler)
+
+/* //Swagger Integration
+var swaggerUi = require('swagger-ui-express')
+    
+swaggerDocument = require('./swagger.json')
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument)) */
+
 app.use('*', (req, res, next) => {
     const err = new AppError(404, 'fail', 'undefined route');
     next(err, req, res, next);
 })
 
-app.use(globalErrHandler)
 
 module.exports = app
