@@ -25,14 +25,13 @@ exports.getOne = Model => async (req, res, next) => {
     }
 }
 
-exports.getAll = Model => async (req, res, next) => {
+exports.getAll = async (Model, req, res, next) => {
     try {
-        new APIFeatures(Model.find().populate( 'user', 'name surname').exec(function (err, feature) {
-            new Response(res).success(feature)
-        }))
+        const features = new APIFeatures(Model.find().populate('user', 'name surname'), req.query).sort().paginate()
+        const doc = await features.query
+        return doc
 
     } catch (error) {
         next(error)
     }
 }
-

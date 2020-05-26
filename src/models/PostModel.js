@@ -16,8 +16,13 @@ const postSchema = base.schema(base.create, {
         ref: 'User'
     }, like: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'}
+        ref: 'User'
+    }
     ],
+    likeCount: {
+        type: Number,
+        required: [false]
+    }
 }, {
     versionKey: false
 })
