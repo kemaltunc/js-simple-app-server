@@ -4,7 +4,7 @@ const postController = require('../controllers/PostController')
 const auth = require('../middlewares/Authenticated')
 
 
-//router.use(auth.protect)
+router.use(auth.protect)
 router.post('/create', postController.insert)
 router.get('/getAll',postController.getAll)
 module.exports = router
