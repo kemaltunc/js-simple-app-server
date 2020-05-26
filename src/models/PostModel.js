@@ -14,7 +14,10 @@ const postSchema = base.schema(base.create, {
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
+    }, like: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'}
+    ],
 }, {
     versionKey: false
 })
