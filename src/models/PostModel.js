@@ -22,7 +22,17 @@ const postSchema = base.schema(base.create, {
     likeCount: {
         type: Number,
         required: [false]
-    }
+    },
+    isLike: {
+        type: Boolean
+    },
+    isFavorite: {
+        type: Boolean
+    },
+    favorites: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 }, {
     versionKey: false
 })

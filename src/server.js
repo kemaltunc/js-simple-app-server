@@ -12,7 +12,6 @@ dotenv.config({
 
 const database = process.env.DATABASE
 
-
 mongoose.connect(database, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
@@ -20,6 +19,8 @@ mongoose.connect(database, {
     useFindAndModify: false
 }).then(con => {
     console.log('DB connection Successfully!');
+}).catch(err => {
+    con.log(err)
 })
 
 const port = process.env.PORT

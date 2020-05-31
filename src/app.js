@@ -17,14 +17,14 @@ app.use(cors())
 app.use(helmet())
 
 
-const limiter = rateLimit({
+/* const limiter = rateLimit({
     max: 150,
     windowMs: 60 * 60 * 1000,
     message: 'Too Many Request from this IP, please try again in an hour'
 })
 
 app.use('/api', limiter)
-
+ */
 
 app.use(express.json({
     limit: '15kb'

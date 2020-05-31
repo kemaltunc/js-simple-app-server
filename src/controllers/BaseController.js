@@ -6,7 +6,14 @@ const User = require('../models/UserModel')
 exports.createOne = Model => async (req, res, next) => {
     try {
         const doc = await Model.create(req.body)
-        new Response(res).success(doc)
+
+        if (!doc) {
+            new Response(res).successBoolean(false)
+        } else {
+            new Response(res).successBoolean(true)
+        }
+
+
     } catch (error) {
         next(error)
     }

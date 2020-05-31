@@ -20,7 +20,11 @@ const userSchema = baseSchema.schema(baseSchema.create, {
         required: [true, 'Please fill your password'],
         minLength: 6,
         select: false
-    }
+    },
+    favorite: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'
+    }]
 })
 
 userSchema.pre('save', async function (next) {
